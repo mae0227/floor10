@@ -1,0 +1,341 @@
+<meta charset="utf-8"/>
+<html>
+<head>
+
+  <title>changg</title>
+  <style>
+    #image-container {
+      display: inline-block;
+      position: relative;
+    }
+
+/* ここも部屋の数に応じて増やさなければいけない top: y, left: x*/
+        #overlay212 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 34px;
+	 top: 570px;
+	 width: 7.150300%;
+	 height: 7.633600%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay211 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 32px;
+	 top: 675px;
+	 width: 8.082900%;
+	 height: 3.969500%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay210 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 31px;
+	 top: 728px;
+	 width: 7.668400%;
+	 height: 3.893100%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay209 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 31px;
+	 top: 783px;
+	 width: 7.979300%;
+	 height: 3.969500%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay208 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 30px;
+	 top: 833px;
+	 width: 7.875600%;
+	 height: 4.198500%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay207 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 31px;
+	 top: 890px;
+	 width: 7.979300%;
+	 height: 3.740500%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay206 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 31px;
+	 top: 942px;
+	 width: 7.772000%;
+	 height: 4.274800%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay204 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 150px;
+	 top: 893px;
+	 width: 11.399000%;
+	 height: 7.709900%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay203 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 262px;
+	 top: 922px;
+	 width: 9.637300%;
+	 height: 5.267200%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay201 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 193px;
+	 top: 640px;
+	 width: 18.134700%;
+	 height: 10.229000%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay117 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 631px;
+	 top: 486px;
+	 width: 18.134700%;
+	 height: 6.946600%;
+	 mix-blend-mode: multiply;
+	 }
+	#overlay213 {
+	 display: inline-block;
+	 position: absolute;
+	 left: 32px;
+	 top: 432px;
+	 width: 7.772000%;
+	 height: 3.893100%;
+	 mix-blend-mode: multiply;
+	 }
+
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="image" src="10.jpg" alt="">
+
+     <div id="room10">
+     <div id="overlay212"></div>
+	 <div id="overlay211"></div>
+	 <div id="overlay210"></div>
+	 <div id="overlay209"></div>
+	 <div id="overlay208"></div>
+	 <div id="overlay207"></div>
+	 <div id="overlay206"></div>
+	 <div id="overlay204"></div>
+	 <div id="overlay203"></div>
+	 <div id="overlay201"></div>
+	 <div id="overlay117"></div>
+	 <div id="overlay213"></div>
+
+    </div>
+
+<script>
+
+// 画像の一部の色を変える関数
+    // ここで階層データを作りたい ex 曜日[時限[教室番号]]　　ゆくゆくはExcelのデータから自動的にとりた
+    // CSVファイルを取得
+    let csv = new XMLHttpRequest();
+      
+      // CSVファイルへのパス
+      csv.open("GET", "10.csv", false);
+        
+      // csvファイル読み込み失敗時のエラー対応
+      try {
+        csv.send(null);
+      } catch (err) {
+        console.log(err);
+      }
+        
+      // 配列を定義
+      let csvArray = [];
+        
+      // 改行ごとに配列化
+      let lines = csv.responseText.split(/\r\n|\n/);
+        
+      // 1行ごとに処理
+      for (let i = 0; i < lines.length; ++i) {
+        let cells = lines[i].split(",");
+        if (cells.length != 1) {
+          csvArray.push(cells);
+        }
+      }
+
+function changeColor() {
+       var overlay212= document.getElementById("overlay212");
+	   var overlay211= document.getElementById("overlay211");
+	   var overlay210= document.getElementById("overlay210");
+	   var overlay209= document.getElementById("overlay209");
+	   var overlay208= document.getElementById("overlay208");
+	   var overlay207= document.getElementById("overlay207");
+	   var overlay206= document.getElementById("overlay206");
+	   var overlay204= document.getElementById("overlay204");
+	   var overlay203= document.getElementById("overlay203");
+	   var overlay201= document.getElementById("overlay201");
+	   var overlay117= document.getElementById("overlay117");
+	   var overlay213= document.getElementById("overlay213");
+
+      var currentTime = new Date().getHours();
+      var currentTime_M = new Date().getMinutes();
+      var currentDay = new Date().getDay();
+      var currentYear = new Date().getFullYear(); // 現在の時間を取
+      //ここから
+      // 配列を定義
+      // CSVファイルを取得
+      
+      var c_time = [
+        {
+          name: 1,
+          start_h: 9,
+          start_m: 20,
+          end_h: 11,
+          end_m: 0
+        },
+        {
+          name: 2,
+          start_h: 11,
+          start_m: 10,
+          end_h: 12,
+          end_m: 50
+        },
+        {
+          name: 3,
+          start: 13,
+          start_m: 40,
+          end_h: 15,
+          end_m: 20
+        },
+        {
+          name: 4,
+          start_h: 15,
+          start_m: 30,
+          end_h: 17,
+          end_m: 10
+        },
+        {
+          name: 5,
+          start_h: 17,
+          start_m: 20,
+          end_h: 19,
+          end_m: 0
+        },
+        {
+          name: 0,
+          start_h: 0,
+          start_m: 0,
+          end_h: 7,
+          end_m: 0
+        }
+
+      ]
+
+var zero_room = [0,0,0,0,0,0,0,0,0,0,0,0]//ここもzeros関数を使って教室の数から出したい
+      let currentM = currentTime*60+currentTime_M
+      for(var i=0;i < 6;i++){
+        if(currentM >= (c_time[i]['start_h']*60+c_time[i]['start_m']) && (currentM <= c_time[i]['end_h']*60 + c_time[i]['end_m'])){
+          var rec = c_time[i]['name']
+        }
+      }
+      T = currentTime_M % 25 
+      Days = parseInt(T/5)
+      Class_time = T % 5
+      for(i=0;i < 162;i++){//今は手で数えているがlen等を用いてエクセルを用いて数えたい
+        for(j=0;j < 12;j++){
+          //if(csvArray[i][2] == 2 && csvArray[i][1] == currentDay){//
+        if(csvArray[i][2] == Class_time+1 && csvArray[i][1] == Days+1){
+            var tmp = csvArray[i][7]
+            zero_room[tmp] = 1
+          }
+        }
+      }
+      let YOU = ["月","火","水","木","金"]
+      console.log(YOU[Days])
+      console.log(Class_time+1)
+      console.log(currentTime)
+      console.log(currentTime_M )
+      console.log(zero_room)
+      console.log(csvArray)
+      
+      //曜日>>時間>>使用したい教室データ..(321, 325)>>for{if{}}で使いたいインスタンス使用する。それ以外の教室インスタンスは白のオーバーレイを使用
+
+      // 教室ごとに増やさなければいけない
+
+
+
+if (zero_room[0] == 1) {
+	 overlay212.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay212.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[1] == 1) {
+	 overlay211.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay211.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[2] == 1) {
+	 overlay210.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay210.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[3] == 1) {
+	 overlay209.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay209.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[4] == 1) {
+	 overlay208.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay208.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[5] == 1) {
+	 overlay207.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay207.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[6] == 1) {
+	 overlay206.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay206.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[7] == 1) {
+	 overlay204.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay204.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[8] == 1) {
+	 overlay203.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay203.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[9] == 1) {
+	 overlay201.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay201.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[10] == 1) {
+	 overlay117.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay117.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+	if (zero_room[11] == 1) {
+	 overlay213.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+	 } else {;
+	 overlay213.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+	 }
+    }
+	setInterval(changeColor, 6000); // 60秒ごとに更新
+
+</script>
+</body>
+</html>

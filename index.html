@@ -201,6 +201,12 @@
         }
       }
 
+	if (scheduleInfo.length === 0) {
+    	var noScheduleMessage = document.createElement("p");
+    	noScheduleMessage.textContent = "本日使用予定の授業はありません";
+    	scheduleContainer.appendChild(noScheduleMessage);
+    	return;
+  	}
       var scheduleTable = document.createElement("table");
       scheduleTable.classList.add("schedule-table");
 

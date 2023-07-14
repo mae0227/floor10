@@ -135,20 +135,20 @@
     <div id="image-container">
         <img id="image" src="10.jpg" alt="">
 
-     <div id="room10">
-     <div id="overlay212"></div>
-	 <div id="overlay211"></div>
-	 <div id="overlay210"></div>
-	 <div id="overlay209"></div>
-	 <div id="overlay208"></div>
-	 <div id="overlay207"></div>
-	 <div id="overlay206"></div>
-	 <div id="overlay204"></div>
-	 <div id="overlay203"></div>
-	 <div id="overlay201"></div>
-	 <div id="overlay117"></div>
-	 <div id="overlay213"></div>
-
+    	<div id="room10">
+     		<div id="overlay212"></div>
+	 		<div id="overlay211"></div>
+	 		<div id="overlay210"></div>
+	 		<div id="overlay209"></div>
+	 		<div id="overlay208"></div>
+	 		<div id="overlay207"></div>
+	 		<div id="overlay206"></div>
+	 		<div id="overlay204"></div>
+	 		<div id="overlay203"></div>
+	 		<div id="overlay201"></div>
+	 		<div id="overlay117"></div>
+	 		<div id="overlay213"></div>
+		</div>
     </div>
 
 	<div id="schedule-container"></div>
@@ -183,7 +183,139 @@
         }
       }
 
-function changeColor() {
+	function displaySchedule(classroom) {
+      var scheduleContainer = document.getElementById("schedule-container");
+      scheduleContainer.innerHTML = ""; // 内容をクリア
+
+      var scheduleInfo = [];
+
+      for (var i = 1; i <= 5; i++) {
+        for (var j = 0; j < csvArray.length; j++) {
+          var day = parseInt(csvArray[j][1]);
+          var classTime = parseInt(csvArray[j][2]);
+          var classroomNum = parseInt(csvArray[j][7]);
+
+          if (day == Days + 1 && classTime == i && classroomNum == classroom) {
+            scheduleInfo.push(csvArray[j]);
+          }
+        }
+      }
+
+      var scheduleTable = document.createElement("table");
+      scheduleTable.classList.add("schedule-table");
+
+      var tableHeader = document.createElement("tr");
+      var tableHeaderTime = document.createElement("th");
+      tableHeaderTime.textContent = "時限";
+      tableHeader.appendChild(tableHeaderTime);
+
+      var tableHeaderSubject = document.createElement("th");
+      tableHeaderSubject.textContent = "科目";
+      tableHeader.appendChild(tableHeaderSubject);
+
+      var tableHeaderTeacher = document.createElement("th");
+      tableHeaderTeacher.textContent = "教員";
+      tableHeader.appendChild(tableHeaderTeacher);
+
+      scheduleTable.appendChild(tableHeader);
+
+      for (var k = 0; k < scheduleInfo.length; k++) {
+        var scheduleRow = document.createElement("tr");
+
+        var timeCell = document.createElement("td");
+        timeCell.textContent = scheduleInfo[k][2];
+        scheduleRow.appendChild(timeCell);
+
+        var subjectCell = document.createElement("td");
+        subjectCell.textContent = scheduleInfo[k][3];
+        scheduleRow.appendChild(subjectCell);
+
+        var teacherCell = document.createElement("td");
+        teacherCell.textContent = scheduleInfo[k][4];
+        scheduleRow.appendChild(teacherCell);
+
+        scheduleTable.appendChild(scheduleRow);
+      }
+
+      scheduleContainer.appendChild(scheduleTable);
+    }
+
+	function addClickListeners() {
+    	var overlay212 = document.getElementById("overlay212");
+    	var overlay211 = document.getElementById("overlay211");
+    	var overlay210 = document.getElementById("overlay210");
+    	var overlay209 = document.getElementById("overlay209");
+    	var overlay208 = document.getElementById("overlay208");
+    	var overlay207 = document.getElementById("overlay207");
+    	var overlay206 = document.getElementById("overlay206");
+    	var overlay204 = document.getElementById("overlay204");
+    	var overlay203 = document.getElementById("overlay203");
+    	var overlay201 = document.getElementById("overlay201");
+    	var overlay117 = document.getElementById("overlay117");
+    	var overlay213 = document.getElementById("overlay213");
+
+      overlay212.addEventListener("click", function() {
+        // オーバーレイ212がクリックされたときの処理
+		displaySchedule(0);
+      });
+
+	  overlay211.addEventListener("click", function() {
+        // オーバーレイ211がクリックされたときの処理
+		displaySchedule(1);
+      });
+
+	  overlay210.addEventListener("click", function() {
+        // オーバーレイ210がクリックされたときの処理
+		displaySchedule(2);
+      });
+
+	  overlay209.addEventListener("click", function() {
+        // オーバーレイ209がクリックされたときの処理
+		displaySchedule(3);
+      });
+
+	  overlay208.addEventListener("click", function() {
+        // オーバーレイ208がクリックされたときの処理
+		displaySchedule(4);
+      });
+
+	  overlay207.addEventListener("click", function() {
+        // オーバーレイ207がクリックされたときの処理
+		displaySchedule(5);
+      });
+
+	  overlay206.addEventListener("click", function() {
+        // オーバーレイ206がクリックされたときの処理
+		displaySchedule(6);
+      });
+
+	  overlay204.addEventListener("click", function() {
+        // オーバーレイ204がクリックされたときの処理
+		displaySchedule(7);
+      });
+
+	  overlay203.addEventListener("click", function() {
+        // オーバーレイ203がクリックされたときの処理
+		displaySchedule(8);
+      });
+
+	  overlay201.addEventListener("click", function() {
+        // オーバーレイ201がクリックされたときの処理
+		displaySchedule(9);
+      });
+
+	  overlay117.addEventListener("click", function() {
+        // オーバーレイ117がクリックされたときの処理
+		displaySchedule(10);
+      });
+
+	  overlay213.addEventListener("click", function() {
+        // オーバーレイ213がクリックされたときの処理
+		displaySchedule(11);
+      });
+	}
+	
+	function changeColor() {
        var overlay212= document.getElementById("overlay212");
 	   var overlay211= document.getElementById("overlay211");
 	   var overlay210= document.getElementById("overlay210");
@@ -347,144 +479,12 @@ if (zero_room[0] == 1) {
 	 }
     }
 
-	function displaySchedule(classroom) {
-      var scheduleContainer = document.getElementById("schedule-container");
-      scheduleContainer.innerHTML = ""; // 内容をクリア
-
-      var scheduleInfo = [];
-
-      for (var i = 1; i <= 5; i++) {
-        for (var j = 0; j < csvArray.length; j++) {
-          var day = parseInt(csvArray[j][1]);
-          var classTime = parseInt(csvArray[j][2]);
-          var classroomNum = parseInt(csvArray[j][7]);
-
-          if (day == Days + 1 && classTime == i && classroomNum == classroom) {
-            scheduleInfo.push(csvArray[j]);
-          }
-        }
-      }
-
-      var scheduleTable = document.createElement("table");
-      scheduleTable.classList.add("schedule-table");
-
-      var tableHeader = document.createElement("tr");
-      var tableHeaderTime = document.createElement("th");
-      tableHeaderTime.textContent = "時限";
-      tableHeader.appendChild(tableHeaderTime);
-
-      var tableHeaderSubject = document.createElement("th");
-      tableHeaderSubject.textContent = "科目";
-      tableHeader.appendChild(tableHeaderSubject);
-
-      var tableHeaderTeacher = document.createElement("th");
-      tableHeaderTeacher.textContent = "教員";
-      tableHeader.appendChild(tableHeaderTeacher);
-
-      scheduleTable.appendChild(tableHeader);
-
-      for (var k = 0; k < scheduleInfo.length; k++) {
-        var scheduleRow = document.createElement("tr");
-
-        var timeCell = document.createElement("td");
-        timeCell.textContent = scheduleInfo[k][2];
-        scheduleRow.appendChild(timeCell);
-
-        var subjectCell = document.createElement("td");
-        subjectCell.textContent = scheduleInfo[k][3];
-        scheduleRow.appendChild(subjectCell);
-
-        var teacherCell = document.createElement("td");
-        teacherCell.textContent = scheduleInfo[k][4];
-        scheduleRow.appendChild(teacherCell);
-
-        scheduleTable.appendChild(scheduleRow);
-      }
-
-      scheduleContainer.appendChild(scheduleTable);
-    }
-
-	function addClickListeners() {
-    	var overlay212 = document.getElementById("overlay212");
-    	var overlay211 = document.getElementById("overlay211");
-    	var overlay210 = document.getElementById("overlay210");
-    	var overlay209 = document.getElementById("overlay209");
-    	var overlay208 = document.getElementById("overlay208");
-    	var overlay207 = document.getElementById("overlay207");
-    	var overlay206 = document.getElementById("overlay206");
-    	var overlay204 = document.getElementById("overlay204");
-    	var overlay203 = document.getElementById("overlay203");
-    	var overlay201 = document.getElementById("overlay201");
-    	var overlay117 = document.getElementById("overlay117");
-    	var overlay213 = document.getElementById("overlay213");
-
-      overlay212.addEventListener("click", function() {
-        // オーバーレイ212がクリックされたときの処理
-		displaySchedule(0);
-      });
-
-	  overlay211.addEventListener("click", function() {
-        // オーバーレイ211がクリックされたときの処理
-		displaySchedule(1);
-      });
-
-	  overlay210.addEventListener("click", function() {
-        // オーバーレイ210がクリックされたときの処理
-		displaySchedule(2);
-      });
-
-	  overlay209.addEventListener("click", function() {
-        // オーバーレイ209がクリックされたときの処理
-		displaySchedule(3);
-      });
-
-	  overlay208.addEventListener("click", function() {
-        // オーバーレイ208がクリックされたときの処理
-		displaySchedule(4);
-      });
-
-	  overlay207.addEventListener("click", function() {
-        // オーバーレイ207がクリックされたときの処理
-		displaySchedule(5);
-      });
-
-	  overlay206.addEventListener("click", function() {
-        // オーバーレイ206がクリックされたときの処理
-		displaySchedule(6);
-      });
-
-	  overlay204.addEventListener("click", function() {
-        // オーバーレイ204がクリックされたときの処理
-		displaySchedule(7);
-      });
-
-	  overlay203.addEventListener("click", function() {
-        // オーバーレイ203がクリックされたときの処理
-		displaySchedule(8);
-      });
-
-	  overlay201.addEventListener("click", function() {
-        // オーバーレイ201がクリックされたときの処理
-		displaySchedule(9);
-      });
-
-	  overlay117.addEventListener("click", function() {
-        // オーバーレイ117がクリックされたときの処理
-		displaySchedule(10);
-      });
-
-	  overlay213.addEventListener("click", function() {
-        // オーバーレイ213がクリックされたときの処理
-		displaySchedule(11);
-      });
-	}
-	
 	 // 初期表示
 	 function initialize() {
       changeColor();
       addClickListeners();
     }
-	
+
 	setInterval(initialize, 6000); // 60秒ごとに更新
 
 </script>

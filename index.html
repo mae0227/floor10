@@ -152,7 +152,7 @@
     </div>
 
 	<div id="schedule-container"></div>
-	
+
 <script>
 
 // 画像の一部の色を変える関数
@@ -479,8 +479,13 @@ if (zero_room[0] == 1) {
       });
 	}
 	
-	setInterval(changeColor, 6000); // 60秒ごとに更新
-	addClickListeners();
+	 // 初期表示
+	 function initialize() {
+      changeColor();
+      addClickListeners();
+    }
+	
+	setInterval(initialize, 6000); // 60秒ごとに更新
 
 </script>
 </body>

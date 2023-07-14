@@ -205,6 +205,7 @@
       scheduleTable.classList.add("schedule-table");
 
       var tableHeader = document.createElement("tr");
+
       var tableHeaderTime = document.createElement("th");
       tableHeaderTime.textContent = "時限";
       tableHeader.appendChild(tableHeaderTime);
@@ -212,10 +213,6 @@
       var tableHeaderSubject = document.createElement("th");
       tableHeaderSubject.textContent = "科目";
       tableHeader.appendChild(tableHeaderSubject);
-
-      var tableHeaderTeacher = document.createElement("th");
-      tableHeaderTeacher.textContent = "教員";
-      tableHeader.appendChild(tableHeaderTeacher);
 
       scheduleTable.appendChild(tableHeader);
 
@@ -227,12 +224,8 @@
         scheduleRow.appendChild(timeCell);
 
         var subjectCell = document.createElement("td");
-        subjectCell.textContent = scheduleInfo[k][3];
+        subjectCell.textContent = scheduleInfo[k][0];
         scheduleRow.appendChild(subjectCell);
-
-        var teacherCell = document.createElement("td");
-        teacherCell.textContent = scheduleInfo[k][4];
-        scheduleRow.appendChild(teacherCell);
 
         scheduleTable.appendChild(scheduleRow);
       }

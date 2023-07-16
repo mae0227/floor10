@@ -142,6 +142,9 @@
 				font-weight: bold;
 				margin: auto;
 			}
+			#site-name:hover{
+				cursor:pointer;
+			}
 
 			#schedule-container {
 				flex-basis: 30%;
@@ -307,6 +310,9 @@
 				font-weight: bold;
 				margin: auto;
 			}
+			#site-name:hover{
+				cursor:pointer;
+			}
 
 			#schedule-container {
 				padding: 1%;
@@ -359,7 +365,13 @@
 
 		<div id="schedule-container"></div>
 	</main>
-		<script>// 画像の一部の色を変える関数
+		<script>
+            document.getElementById("site-name").onclick = function () {
+                location.href = "https://mae0227.github.io/top/";
+            }
+
+
+	　　　　　// 画像の一部の色を変える関数
 			// ここで階層データを作りたい ex 曜日[時限[教室番号]]　　ゆくゆくはExcelのデータから自動的にとりた
 			// CSVファイルを取得
 			let csv = new XMLHttpRequest();

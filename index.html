@@ -169,6 +169,10 @@
 				max-width: 100%;
 				height: auto;
 			}
+            #map-image {
+                height: 100vh;
+                overflow: auto;
+            }
 		}
 
 
@@ -176,7 +180,6 @@
 			#image-container {
 				display: inline-block;
 				position: relative;
-				order: 2;
 			}
 
 			/* ここも部屋の数に応じて増やさなければいけない top: y, left: x*/
@@ -331,11 +334,17 @@
 				display: flex;
 				flex-direction: column;
 			}
+            #map-image {
+                height: 100vh;
+                overflow: auto;
+                order: 2;
+            }
 
 			#image {
 				max-width: 100%;
 				height: auto;
 			}
+            
 		}
 	</style>
 </head>
@@ -346,6 +355,7 @@
 		</div>
 	</header>
 	<main id="main">
+		<div id="map-image">
 		<div id="image-container">
 			<img id="image" src="10.jpg" alt="">
 
@@ -363,6 +373,7 @@
 				<div id="overlay117"></div>
 				<div id="overlay213"></div>
 		    </div>
+		</div>
 		</div>
 
 		<div id="schedule-container"></div>

@@ -146,10 +146,12 @@
 			#site-name:hover{
 				cursor:pointer;
 			}
-
-			#schedule-container {
+			#time{
 				flex-basis: 30%;
 				flex-shrink: 0;
+			}
+
+			#schedule-container {
 				padding: 1%;
 				border: 1px solid #ccc;
 				background-color: #f9f9f9;
@@ -318,12 +320,14 @@
 			#site-name:hover{
 				cursor:pointer;
 			}
+			#time{
+				order: 1;
+			}
 
 			#schedule-container {
 				padding: 1%;
 				border: 1px solid #ccc;
 				background-color: #f9f9f9;
-				order: 1;
 			}
 
 				#schedule-container th {
@@ -379,9 +383,10 @@
 		    </div>
 		</div>
 		</div>
-
-		<div id="schedule-container"></div>
-
+		<div id="time">
+			<div id="result"></div>
+			<div id="schedule-container"></div>
+		</div>
 	</main>
 	<div id="result"></div>
 		<script>

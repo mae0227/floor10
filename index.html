@@ -344,6 +344,9 @@
 				max-width: 100%;
 				height: auto;
 			}
+			#result{
+				z-index: 10;
+			}
             
 		}
 	</style>
@@ -352,6 +355,7 @@
 	<header id="header">
 		<div id="site-name">
 			<p>鳩キャン教室ナビ</p>
+			
 		</div>
 	</header>
 	<main id="main">
@@ -377,7 +381,9 @@
 		</div>
 
 		<div id="schedule-container"></div>
+
 	</main>
+	<div id="result"></div>
 		<script>
             document.getElementById("site-name").onclick = function () {
                 location.href = "https://mae0227.github.io/top/";
@@ -640,6 +646,9 @@
 				console.log(currentTime_M)
 				console.log(zero_room)
 				console.log(csvArray)
+
+                var resultElement = document.getElementById("result");
+                resultElement.textContent = YOU[Days] + "曜日, " + (Class_time + 1) + "時限目, " + currentTime + "時" + currentTime_M + "分";
 
 				//曜日>>時間>>使用したい教室データ..(321, 325)>>for{if{}}で使いたいインスタンス使用する。それ以外の教室インスタンスは白のオーバーレイを使用
 
